@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isButtonLoading = false
+    @State private var isButtonDisabled = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 52) {
+            Button("Tap me to disable", action: {
+                withAnimation {
+                    isButtonDisabled.toggle()
+                }
+            })
+            
+            Button("Tap me to load", action: {
+                isButtonLoading.toggle()
+            })
+            .loading(isButtonLoading)
+            .disabled(isButtonDisabled)
+            .buttonStyle(.main)
         }
         .padding()
     }
