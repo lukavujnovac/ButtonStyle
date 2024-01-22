@@ -13,15 +13,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 52) {
-            Button("Tap me to disable", action: {
+            Button("Tap me to disable") {
                 withAnimation {
                     isButtonDisabled.toggle()
                 }
-            })
+            }
             
-            Button("Tap me to load", action: {
+            Button("Tap me to load") {
                 isButtonLoading.toggle()
-            })
+            }
             .loading(isButtonLoading)
             .disabled(isButtonDisabled)
             .buttonStyle(.main)
